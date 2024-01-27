@@ -1,4 +1,5 @@
 export const assets = [
+  { name: 'background', path: 'assets/background/background.png' },
   { name: 'blue-1', path: 'assets/people/blue-1.png' },
   { name: 'blue-2', path: 'assets/people/blue-2.png' },
   { name: 'green-1', path: 'assets/people/green-1.png' },
