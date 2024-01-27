@@ -1,13 +1,22 @@
 import * as _ from 'lodash';
 import * as Phaser from 'phaser';
 
-export type PeopleTypes = 'blue-1' | 'blue-2' | 'green-1' | 'purple-1' | 'purple-2'
-  | 'red-1' | 'red-2' | 'yellow-1' | 'yellow-2';
+export enum PeopleType {
+  blue1 = 'blue-1',
+  blue2 = 'blue-2',
+  green1 = 'green-1',
+  purple1 = 'purple-1',
+  purple2 = 'purple-2',
+  red1 = 'red-1',
+  red2 = 'red-2',
+  yellow1 = 'yellow-1',
+  yellow2 = 'yellow-2',
+};
 
-export class AudienceMemberEntity extends Phaser.GameObjects.Sprite {
+export class AudienceMember extends Phaser.GameObjects.Sprite {
 
-  public static create(scene: Phaser.Scene, type: PeopleTypes, x, y, scale = 0.1): AudienceMemberEntity {
-    return new AudienceMemberEntity(scene, type, x, y, scale);
+  public static create(scene: Phaser.Scene, type: PeopleType, x, y, scale = 0.1): AudienceMember {
+    return new AudienceMember(scene, type, x, y, scale);
   }
 
   constructor(scene: Phaser.Scene, type, x, y, scale) {
