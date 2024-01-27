@@ -10,14 +10,13 @@ export enum ButtonColor {
 };
 
 export class Button extends Phaser.GameObjects.Sprite {
-
   private readonly shake: ShakePosition;
 
   constructor(scene: Phaser.Scene, color, x, y) {
     super(scene, x, y, `button-${color}`, 0);
     scene.add.existing(this);
     this.setInteractive();
-    this.setScale(0.2);
+    this.setScale(0.24);
     this.shake = new ShakePosition(this, {});
     this.on('pointerdown', () => this.shake.shake());
   }
