@@ -25,6 +25,7 @@ export class Button extends Phaser.GameObjects.Sprite {
 
     this.on('pointerdown', () => this.setPressedState());
     this.on('pointerup', () => this.setDefaultState());
+    this.on('pointerout', () => this.setDefaultState());
     this.setDefaultState()
   }
 
