@@ -7,16 +7,16 @@ const config: Phaser.Types.Core.GameConfig = {
   title: 'Demo Game',
 
   scene: [Boot, Preload, GameScene],
-  backgroundColor: '#333',
+  backgroundColor: '#000',
   scale: {
     mode: Phaser.Scale.FIT,
     parent: 'game-container',
     autoCenter: Phaser.Scale.CENTER_HORIZONTALLY,
-    width: 800,
-    height: 600,
+    width: 768,
+    height: 1024,
     max: {
-      width: 800,
-      height: 600
+      width: 768,
+      height: 1024
     }
   }
 };
