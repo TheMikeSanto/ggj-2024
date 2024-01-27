@@ -12,7 +12,7 @@ export class Button extends Phaser.GameObjects.Sprite {
 
   private static readonly DefaultAngle = 0;
 
-  private static readonly DefaultScale = 0.20;
+  private static readonly DefaultScale = 0.24;
 
   private static readonly PressedAngle = 2;
 
