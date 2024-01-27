@@ -14,4 +14,13 @@ export const assets = [
   { name: 'button-blue', path: 'assets/buttons/blue.png' },
   { name: 'button-yellow', path: 'assets/buttons/yellow.png' },
   { name: 'button-green', path: 'assets/buttons/green.png' },
+  { name: 'dino-1', path: 'assets/dino/dino-1.png' },
+  { name: 'dino-2', path: 'assets/dino/dino-2.png' },
+  { name: 'dino-3', path: 'assets/dino/dino-3.png' },
+  { name: 'dino-4', path: 'assets/dino/dino-4.png' },
+  { name: 'dino-5', path: 'assets/dino/dino-5.png' },
+  { name: 'dino-6', path: 'assets/dino/dino-6.png' },
+  { name: 'dino-7', path: 'assets/dino/dino-7.png' },
+  { name: 'dino-8', path: 'assets/dino/dino-8.png' },
+  { name: 'dino-9', path: 'assets/dino/dino-9.png' },
 ];

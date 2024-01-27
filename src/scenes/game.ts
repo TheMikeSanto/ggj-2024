@@ -1,11 +1,14 @@
 import { Scene } from 'phaser';
 
 import { AudienceMember, PeopleType } from '../entities/audience-member';
+import { Comedian } from '../entities/comedian';
 
 export class Game extends Scene {
   private stage;
 
   private audience: AudienceMember[];
+
+  private comedian: Comedian;
 
   constructor() {
     super({
@@ -37,6 +40,8 @@ export class Game extends Scene {
     this.add.image(100, 790, 'button-blue').setScale(0.15);
     this.add.image(210, 900, 'button-green').setScale(0.15);
     this.add.image(100, 900, 'button-yellow').setScale(0.15);
+
+    this.comedian = new Comedian(this, 650, 820);
   }
 
   public update(time: number, delta: number): void {
