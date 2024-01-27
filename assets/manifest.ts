@@ -10,4 +10,8 @@ export const assets = [
   { name: 'stage', path: 'assets/stage.png' },
   { name: 'yellow-1', path: 'assets/people/yellow-1.png' },
   { name: 'yellow-2', path: 'assets/people/yellow-2.png' },
+  { name: 'button-red', path: 'assets/buttons/red.png' },
+  { name: 'button-blue', path: 'assets/buttons/blue.png' },
+  { name: 'button-yellow', path: 'assets/buttons/yellow.png' },
+  { name: 'button-green', path: 'assets/buttons/green.png' },
 ];
