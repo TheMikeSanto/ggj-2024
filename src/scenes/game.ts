@@ -1,6 +1,7 @@
 import { Scene } from 'phaser';
 
 import { AudienceMember, PeopleType } from '../entities/audience-member';
+import { Button, ButtonColor } from '../entities/button';
 import { Comedian } from '../entities/comedian';
 
 export class Game extends Scene {
@@ -9,6 +10,14 @@ export class Game extends Scene {
   private audience: AudienceMember[];
 
   private comedian: Comedian;
+
+  private blueButton: Button;
+
+  private greenButton: Button;
+
+  private redButton: Button;
+
+  private yellowButton: Button;
 
   constructor() {
     super({
@@ -36,12 +45,12 @@ export class Game extends Scene {
     ];
     this.stage = this.add.image(300, 840, 'stage');
 
-    this.add.image(210, 790, 'button-red').setScale(0.15);
-    this.add.image(100, 790, 'button-blue').setScale(0.15);
-    this.add.image(210, 900, 'button-green').setScale(0.15);
-    this.add.image(100, 900, 'button-yellow').setScale(0.15);
+    this.redButton = new Button(this, ButtonColor.Red, 275, 780);
+    this.blueButton = new Button(this, ButtonColor.Blue, 125, 780);
+    this.greenButton = new Button(this, ButtonColor.Green, 275, 930);
+    this.yellowButton = new Button(this, ButtonColor.Yellow, 125, 930);
 
-    this.comedian = new Comedian(this, 650, 820);
+    this.comedian = new Comedian(this, 575, 850);
   }
 
   public update(time: number, delta: number): void {
