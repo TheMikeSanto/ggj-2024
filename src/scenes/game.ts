@@ -29,6 +29,11 @@ export class Game extends Scene {
     });
     this.audience = [...this.audience, AudienceMemberEntity.create(this, 'green-1', 700, 350, 1)];
     this.stage = this.add.image(300, 840, 'stage');
+
+    this.add.image(210, 790, 'button-red').setScale(0.15);
+    this.add.image(100, 790, 'button-blue').setScale(0.15);
+    this.add.image(210, 900, 'button-green').setScale(0.15);
+    this.add.image(100, 900, 'button-yellow').setScale(0.15);
   }
 
   public update(time: number, delta: number): void {
