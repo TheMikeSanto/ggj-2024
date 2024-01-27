@@ -24,6 +24,7 @@
     "webpack-dev-server": "^4.15.1"
   },
   "dependencies": {
+    "lodash": "^4.17.21",
     "phaser": "^3.70.0"
   }
 }
