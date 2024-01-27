@@ -11,7 +11,7 @@ export class AudienceMemberEntity extends Phaser.GameObjects.Sprite {
   }
 
   constructor(scene: Phaser.Scene, type, x, y, scale) {
-    super(scene, x, y, type, 1);
+    super(scene, x, y, type, 0);
     scene.add.existing(this);
     this.setScale(scale);
   }
