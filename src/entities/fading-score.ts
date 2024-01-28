@@ -1,7 +1,6 @@
 import * as _ from 'lodash';
 import * as Phaser from 'phaser';
 import { EaseMoveToDestroy } from 'phaser3-rex-plugins/plugins/easemove';
-import FadeOutDestroy from 'phaser3-rex-plugins/plugins/fade-out-destroy';
 
 export class FadingScore extends Phaser.GameObjects.Text {
 

@@ -31,4 +31,9 @@ export const assets = [
   { name: 'stage', path: 'assets/stage.png' },
   { name: 'yellow-1', path: 'assets/people/yellow-1.png' },
   { name: 'yellow-2', path: 'assets/people/yellow-2.png' },
+
+  // { name: 'mumble-1', path: 'assets/sounds/mumble-1.wav' },
+  // { name: 'mumble-2', path: 'assets/sounds/mumble-2.wav' },
+  // { name: 'mumble-3', path: 'assets/sounds/mumble-3.wav' },
+  // { name: 'mumble-4', path: 'assets/sounds/mumble-4.wav' },
 ];
