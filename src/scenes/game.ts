@@ -55,8 +55,11 @@ export class Game extends Phaser.Scene {
   private createBackground(): Phaser.GameObjects.Group {
     const { height, width } = this.scale;
     const bg = this.add.sprite(width * 0.5, height* 0.5, 'background');
+    const lights = this.add.sprite(width * 0.5, height * 0.5, 'lights');
     bg.setDepth(-18);
     bg.setTint(0x40291c);
+    lights.setDepth(-17);
+    lights.setTint(0x754b33);
     const rows = [...new Array(8)].map((value, index) => {
       const row = this.add.sprite(width * 0.5, height * 0.5, `row-${index + 1}`);
       row.setDepth(8 - index * 2);
