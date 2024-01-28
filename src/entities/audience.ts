@@ -33,10 +33,20 @@ export class Audience {
       offsetY: 50,
     },
   };
+  private booSounds;
   private excitedMembers: AudienceMember[] = [];
   private members: AudienceMember[][] = this.generateAudience();
 
   constructor(private scene: Phaser.Scene) {
+    this.booSounds = [
+      this.scene.sound.add('boo1').setVolume(0.5),
+      this.scene.sound.add('boo2').setVolume(0.5),
+      this.scene.sound.add('boo3').setVolume(0.5),
+    ];
+  }
+
+  public boo(): void {
+    _.sample(this.booSounds).play();
   }
 
   public makeEmStand(): AudienceMember[] {

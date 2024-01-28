@@ -1,5 +1,8 @@
 export const assets = {
   audio: [
+    { name: 'boo1', path: 'assets/sounds/boos/boo1.wav' },
+    { name: 'boo2', path: 'assets/sounds/boos/boo2.wav' },
+    { name: 'boo3', path: 'assets/sounds/boos/boo3.wav' },
     { name: 'cheer', path: 'assets/sounds/cheer.wav' },
     { name: 'hah-1', path: 'assets/sounds/hah-1.wav' },
     { name: 'hah-2', path: 'assets/sounds/hah-1.ogg'},

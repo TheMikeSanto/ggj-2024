@@ -86,13 +86,15 @@ export class Game extends Phaser.Scene {
     });
   }
 
-  private endRound(color?: string): void {
+  private endRound(jokeType?: string): void {
     this.currentLoop.remove();
     this.audience.makeEmSit();
-    if (color) {
+    if (jokeType) {
       this.comedian.speak();
-      this.score += this.audience.tellJoke(color, this.jokeValue);
+      this.score += this.audience.tellJoke(jokeType, this .jokeValue);
       this.scoreCounter.setText(this.score.toString());
+    } else {
+      this.audience.boo();
     }
     [this.redButton, this.blueButton, this.greenButton, this.yellowButton].forEach(button => {
       button.disable();
