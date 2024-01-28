@@ -35,7 +35,23 @@ export class Audience {
   private members: AudienceMember[][] = this.generateAudience();
 
   constructor(private scene: Phaser.Scene) {
-    this.members
+    this.scene.time.addEvent({
+      delay: 10000,
+      startAt: 0,
+      repeat: 10,
+      callback: (...args) => console.log('timer event', args),
+    });
+  }
+
+  public makeEmStand(): void {
+    _(this.members)
+      .flatten()
+      .sampleSize(5)
+      .forEach(member => member.standUp());
+  }
+
+  public update() {
+    
   }
 
   private generateAudience(): AudienceMember[][] {

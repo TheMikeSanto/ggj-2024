@@ -38,6 +38,7 @@ export class Game extends Phaser.Scene {
     this.redButton.on('pointerdown', () => {
       new FadingScore(this, "+1000", this.redButton.x + 25, this.redButton.y - 250);
       this.comedian.speak();
+      this.audience.makeEmStand();
     });
 
     this.blueButton.on('pointerdown', () => {
