@@ -1,9 +1,9 @@
 import * as Phaser from 'phaser';
 
-import { AudienceMember, PeopleType } from '../entities/audience-member';
+import { Audience } from '../entities/audience';
 import { Button, ButtonColor } from '../entities/button';
 import { Comedian } from '../entities/comedian';
-import { Audience } from '../entities/audience';
+import { FadingScore } from '../entities/fading-score';
 
 export class Game extends Phaser.Scene {
   private audience: Audience;
@@ -32,6 +32,22 @@ export class Game extends Phaser.Scene {
     this.blueButton = new Button(this, ButtonColor.Blue, 225, 750);
     this.greenButton = new Button(this, ButtonColor.Green, 400, 920);
     this.yellowButton = new Button(this, ButtonColor.Yellow, 225, 920);
+
+    this.redButton.on('pointerdown', () => {
+      new FadingScore(this, "+1000", this.redButton.x + 25, this.redButton.y - 250);
+    });
+
+    this.blueButton.on('pointerdown', () => {
+      new FadingScore(this, "+750", this.blueButton.x + 25, this.blueButton.y - 250);
+    });
+
+    this.greenButton.on('pointerdown', () => {
+      new FadingScore(this, "+500", this.greenButton.x + 25, this.greenButton.y - 550);
+    });
+
+    this.yellowButton.on('pointerdown', () => {
+      new FadingScore(this, "+250", this.yellowButton.x + 25, this.yellowButton.y - 550);
+    });
 
     this.comedian = new Comedian(this, 775, 850);
   }
