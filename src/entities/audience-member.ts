@@ -16,7 +16,14 @@ export enum PeopleType {
 export class AudienceMember extends Phaser.GameObjects.Sprite {
 
   public static create(scene: Phaser.Scene, type: PeopleType, x, y, scale = 0.1): AudienceMember {
-    return new AudienceMember(scene, type, x, y, scale);
+    const member = new AudienceMember(scene, type, x, y, scale);
+    const chair = scene.add.sprite(member.x, member.y + 50, 'chair');
+    chair.setScale(scale * 5);
+    chair.setTint(0x9d4109);
+    const layer = scene.add.layer();
+    layer.add([chair, member]);
+    layer.sendToBack(chair);
+    return member;
   }
 
   constructor(scene: Phaser.Scene, type, x, y, scale) {
