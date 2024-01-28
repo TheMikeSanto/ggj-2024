@@ -16,12 +16,20 @@ export class Button extends Phaser.GameObjects.Sprite {
     super(scene, x, y, `button-${color}`, 0);
     scene.add.existing(this);
     this.setDepth(21);
-    this.setInteractive();
     this.setScale(0.24);
     this.shake = new ShakePosition(this, {
       magnitude: 10,
       duration: 1500,
     });
     this.on('pointerdown', () => this.shake.shake());
+  }
+
+  public enable(): void {
+    this.setInteractive();
+  }
+
+  public disable(): void {
+    this.setAlpha(0.25);
+    this.disableInteractive();
   }
 }
