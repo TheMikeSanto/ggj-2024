@@ -32,6 +32,7 @@ export const assets = {
     { name: 'dino-9', path: 'assets/dino/dino-9.png' },
     { name: 'green-1', path: 'assets/people/green-1.png' },
     { name: 'lights', path: 'assets/background/lights.png' },
+    { name: 'logo', path: 'assets/logo.jpg' },
     { name: 'purple-1', path: 'assets/people/purple-1.png' },
     { name: 'purple-2', path: 'assets/people/purple-2.png' },
     { name: 'red-1', path: 'assets/people/red-1.png' },

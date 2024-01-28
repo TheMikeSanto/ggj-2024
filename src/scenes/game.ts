@@ -3,7 +3,6 @@ import * as Phaser from 'phaser';
 import { Audience } from '../entities/audience';
 import { Button, ButtonColor } from '../entities/button';
 import { Comedian } from '../entities/comedian';
-import { FadingScore } from '../entities/fading-score';
 
 export class Game extends Phaser.Scene {
   private audience: Audience;
