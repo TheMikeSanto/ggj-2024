@@ -2,23 +2,31 @@
 
 <html lang="en">
 
-<head>
+  <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, minimal-ui">
     <title>Make THEM Laugh</title>
 
     <style>
-        html,
-        body {
-            margin: 0;
-            background: #333;
-        }
-    </style>
-</head>
+      @font-face {
+        font-family: 'Public Pixel';
+        src: url('fonts/PublicPixel.ttf');
+      }
 
-<body>
+      html,
+      body {
+        margin: 0;
+        background: #333;
+      }
+    </style>
+  </head>
+
+  <body>
     <div id="game-container"></div>
     <script src="app.js"></script>
-</body>
+
+    <!-- force font preloading -->
+    <div style="font-family:Public Pixel; position:absolute; left:-1000px; visibility:hidden;">.</div>
+  </body>
 
 </html>
