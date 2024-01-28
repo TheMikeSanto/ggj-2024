@@ -4,6 +4,14 @@ import { EaseMoveTo, EaseMoveFrom } from 'phaser3-rex-plugins/plugins/easemove';
 import { FadingScore } from './fading-score';
 import { Game } from '../scenes/game';
 
+export enum GiggleType {
+  hah1 = 'hah-1',
+  hah2 = 'hah-2',
+  hah3 = 'hah-3',
+  heh1 = 'heh-1',
+  huh1 = 'huh-1',
+};
+
 export enum PeopleType {
   blue1 = 'blue-1',
   blue2 = 'blue-2',
@@ -22,9 +30,10 @@ export class AudienceMember extends Phaser.GameObjects.Sprite {
   public peopleType: PeopleType;
   private origin = { x: this.x, y: this.y };
   private isStanding = false;
+  private giggleSound: Phaser.Sound.BaseSound;
 
-  public static create(scene: Phaser.Scene, type: PeopleType, x, y, scale = 0.1): AudienceMember {
-    const member = new AudienceMember(scene, type, x, y, scale);
+  public static create(scene: Phaser.Scene, type: PeopleType, x, y, scale = 0.1, giggleType: GiggleType): AudienceMember {
+    const member = new AudienceMember(scene, type, x, y, scale, giggleType);
     const chair = scene.add.sprite(member.x, member.y + 50, 'chair');
     chair.setScale(scale * 5);
     chair.setTint(0x9d4109);
@@ -34,11 +43,16 @@ export class AudienceMember extends Phaser.GameObjects.Sprite {
     return member;
   }
   
-  constructor(scene: Phaser.Scene, type, x, y, scale) {
+  constructor(scene: Phaser.Scene, type, x, y, scale, giggleType: GiggleType) {
     super(scene, x, y, type, 0);
     this.peopleType = type;
     scene.add.existing(this);
     this.setScale(scale);
+    this.giggleSound = scene.sound.add(giggleType);
+  }
+
+  public giggle(): void {
+    this.giggleSound.play();
   }
 
   public sitDown(): void {

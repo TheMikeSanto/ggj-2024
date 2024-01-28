@@ -5,7 +5,7 @@ import FadeOutDestroy from 'phaser3-rex-plugins/plugins/fade-out-destroy.js';
 export class Comedian extends Phaser.GameObjects.Sprite {
 
   private static readonly CharacterSet = " $0123456789?@ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-
+  private static readonly SPEAKING_VOLUME = 0.1;
   private mumble1: Phaser.Sound.BaseSound;
   private mumble2: Phaser.Sound.BaseSound;
   private mumble3: Phaser.Sound.BaseSound;
@@ -17,10 +17,10 @@ export class Comedian extends Phaser.GameObjects.Sprite {
     this.setDepth(21);
     this.setScale(0.95);
 
-    this.mumble1 = scene.sound.add('mumble-1').setVolume(0.25);
-    this.mumble2 = scene.sound.add('mumble-2').setVolume(0.25);
-    this.mumble3 = scene.sound.add('mumble-3').setVolume(0.25);
-    this.mumble4 = scene.sound.add('mumble-4').setVolume(0.25);
+    this.mumble1 = scene.sound.add('mumble-1').setVolume(Comedian.SPEAKING_VOLUME);
+    this.mumble2 = scene.sound.add('mumble-2').setVolume(Comedian.SPEAKING_VOLUME);
+    this.mumble3 = scene.sound.add('mumble-3').setVolume(Comedian.SPEAKING_VOLUME);
+    this.mumble4 = scene.sound.add('mumble-4').setVolume(Comedian.SPEAKING_VOLUME);
   }
 
   public speak() {

@@ -41,7 +41,6 @@ export class Game extends Phaser.Scene {
       .on('pointerdown', () => this.endRound('green'));
     this.yellowButton = new Button(this, ButtonColor.Yellow, 175, 920)
       .on('pointerdown', () => this.endRound('yellow'));
-
     this.doGameLoop();
   }
 
@@ -65,6 +64,7 @@ export class Game extends Phaser.Scene {
     bubble.fillRoundedRect(6, 6, 300, 80, 16);
     const text = this.add.text(30, 35, this.score.toString(), {
       fontSize: '32pt',
+      fontFamily: 'Public Pixel',
       color: 'white',
     });
     return text;

@@ -1,10 +1,11 @@
 import * as _ from 'lodash';
 
-import { AudienceMember, PeopleType } from './audience-member';
+import { AudienceMember, GiggleType, PeopleType } from './audience-member';
 
 export class Audience {
   private static readonly NUM_ROWS = 5;
   private static readonly NUM_SEATS = 10;
+  private static readonly NUM_STANDERS = 15;
   private static readonly ROW_SCALES = {
     0: {
       scale: 0.2,
@@ -36,13 +37,12 @@ export class Audience {
   private members: AudienceMember[][] = this.generateAudience();
 
   constructor(private scene: Phaser.Scene) {
-    console.log(this);
   }
 
   public makeEmStand(): AudienceMember[] {
     const members = _(this.members)
       .flatten()
-      .sampleSize(5)
+      .sampleSize(Audience.NUM_STANDERS)
       .value();
     members.forEach(member => member.standUp());
     this.excitedMembers = members;
@@ -56,7 +56,10 @@ export class Audience {
   public tellJoke(type: string, scorePerJoke: number): number {
     this.excitedMembers.forEach(member => member.sitDown());
     const members = this.excitedMembers.filter(member => member.peopleType.includes(type));
-    members.forEach(member => member.tellJoke(scorePerJoke));
+    members.forEach((member, index) => {
+      member.tellJoke(scorePerJoke);
+      setTimeout(() => member.giggle(), index * 200);
+    });
     return members.length * scorePerJoke;
   }
 
@@ -67,7 +70,8 @@ export class Audience {
         const type = _.sample(PeopleType);
         const x = 285 + (seatIndex * pixelsPerSeatX) - (rowIndex * 60);
         const y = 405 + (rowIndex * offsetY);
-        const member = AudienceMember.create(this.scene, type, x, y, scale);
+        const giggleSound = _.sample(GiggleType)
+        const member = AudienceMember.create(this.scene, type, x, y, scale, giggleSound);
         member.setDepth(rowIndex)
         return member;
       });
