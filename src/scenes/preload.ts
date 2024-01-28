@@ -13,6 +13,13 @@ export default class Preload extends Scene {
   }
 
   preload(): void {
+    const screenCenterX = this.cameras.main.worldView.x + this.cameras.main.width / 2;
+    const screenCenterY = this.cameras.main.worldView.y + this.cameras.main.height / 2;
+    this.add.text(screenCenterX, screenCenterY, 'Loading', {
+      fontSize: '48pt',
+      fontFamily: 'Public Pixel',
+      color: 'white',
+    }).setOrigin(0.5);
     assets.images.forEach(({ name, path }) => {
       this.load.image(name, path);
     });
