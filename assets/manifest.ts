@@ -45,7 +45,7 @@ export const assets = {
     { name: 'row-6', path: 'assets/background/row-6.png' },
     { name: 'row-7', path: 'assets/background/row-7.png' },
     { name: 'row-8', path: 'assets/background/row-8.png' },
-    { name: 'stage', path: 'assets/stage.jpg' },
+    { name: 'stage', path: 'assets/stage.png' },
     { name: 'yellow-1', path: 'assets/people/yellow-1.png' },
     { name: 'yellow-2', path: 'assets/people/yellow-2.png' },
   ],
