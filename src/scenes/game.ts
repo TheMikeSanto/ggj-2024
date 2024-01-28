@@ -15,6 +15,7 @@ export class Game extends Phaser.Scene {
   private jokeValue = 500;
   private greenButton: Button;
   private redButton: Button;
+  private roundDuration = 2000;
   private score: number = 0;
   private scoreCounter: Phaser.GameObjects.Text;
   private yellowButton: Button;
@@ -73,13 +74,13 @@ export class Game extends Phaser.Scene {
   }
 
   private doGameLoop(): void {
-    const excitedMembers = this.audience.makeEmStand();
+    this.audience.makeEmStand();
     [this.redButton, this.blueButton, this.greenButton, this.yellowButton].forEach(button => {
       button.enable();
     });
 
     this.currentLoop = this.time.addEvent({
-      delay: 5000,
+      delay: this.roundDuration,
       startAt: 0,
       callback: () => this.endRound(),
     });
