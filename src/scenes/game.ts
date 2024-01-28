@@ -9,6 +9,7 @@ export class Game extends Phaser.Scene {
   private audience: Audience;
   private stage;
   private background: Phaser.GameObjects.Group;
+  private bgMusic;
   private comedian: Comedian;
   private currentLoop: Phaser.Time.TimerEvent;
   private blueButton: Button;
@@ -41,6 +42,8 @@ export class Game extends Phaser.Scene {
       .on('pointerdown', () => this.endRound('green'));
     this.yellowButton = new Button(this, ButtonColor.Yellow, 175, 920)
       .on('pointerdown', () => this.endRound('yellow'));
+    this.bgMusic = this.sound.add('music').setVolume(0.1).setLoop(true).play();
+    this.sound.add('cheer').setVolume(0.3).play();
     this.doGameLoop();
   }
 

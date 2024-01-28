@@ -10,6 +10,7 @@ export const assets = {
     { name: 'mumble-2', path: 'assets/sounds/mumble-2.wav' },
     { name: 'mumble-3', path: 'assets/sounds/mumble-3.wav' },
     { name: 'mumble-4', path: 'assets/sounds/mumble-4.wav' },
+    { name: 'music', path: 'assets/sounds/music.wav' },
   ],
   images: [
     { name: 'background', path: 'assets/background/background.png' },

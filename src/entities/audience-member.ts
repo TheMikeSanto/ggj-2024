@@ -8,8 +8,8 @@ export enum GiggleType {
   hah1 = 'hah-1',
   hah2 = 'hah-2',
   hah3 = 'hah-3',
-  heh1 = 'heh-1',
-  huh1 = 'huh-1',
+  // heh1 = 'heh-1',
+  // huh1 = 'huh-1',
 };
 
 export enum PeopleType {
@@ -17,7 +17,7 @@ export enum PeopleType {
   blue2 = 'blue-2',
   green1 = 'green-1',
   purple1 = 'purple-1',
-  purple2 = 'purple-2',
+  // purple2 = 'purple-2',
   red1 = 'red-1',
   red2 = 'red-2',
   yellow1 = 'yellow-1',
