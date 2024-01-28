@@ -19,7 +19,7 @@ export class AudienceMember extends Phaser.GameObjects.Sprite {
     const member = new AudienceMember(scene, type, x, y, scale);
     const chair = scene.add.sprite(member.x, member.y + 50, 'chair');
     chair.setScale(scale * 5);
-    chair.setTint(0x535353);
+    chair.setTint(0x9d4109);
     const layer = scene.add.layer();
     layer.add([chair, member]);
     layer.sendToBack(chair);
