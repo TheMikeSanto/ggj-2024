@@ -17,10 +17,10 @@ export class Comedian extends Phaser.GameObjects.Sprite {
     this.setDepth(21);
     this.setScale(0.95);
 
-    // this.mumble1 = scene.sound.add('mumble-1');
-    // this.mumble2 = scene.sound.add('mumble-2');
-    // this.mumble3 = scene.sound.add('mumble-3');
-    // this.mumble4 = scene.sound.add('mumble-4');
+    this.mumble1 = scene.sound.add('mumble-1');
+    this.mumble2 = scene.sound.add('mumble-2');
+    this.mumble3 = scene.sound.add('mumble-3');
+    this.mumble4 = scene.sound.add('mumble-4');
   }
 
   public speak() {
@@ -46,6 +46,8 @@ export class Comedian extends Phaser.GameObjects.Sprite {
     group.add(bubble);
     group.add(text);
     group.setDepth(999);
+
+    _.sample([this.mumble1, this.mumble2, this.mumble3, this.mumble4]).play();
 
     FadeOutDestroy(bubble, 5000);
     FadeOutDestroy(text, 5000);

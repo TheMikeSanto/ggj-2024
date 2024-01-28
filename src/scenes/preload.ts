@@ -13,8 +13,11 @@ export default class Preload extends Scene {
   }
 
   preload(): void {
-    assets.forEach(({ name, path }) => {
+    assets.images.forEach(({ name, path }) => {
       this.load.image(name, path);
+    });
+    assets.audio.forEach(({ name, path }) => {
+      this.load.audio(name, path);
     });
   }
 
