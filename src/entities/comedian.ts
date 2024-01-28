@@ -24,6 +24,8 @@ export class Comedian extends Phaser.GameObjects.Sprite {
   }
 
   public speak() {
+    this.setTexture(_.sample(['dino-1', 'dino-3', 'dino-4', 'dino-5']));
+    setTimeout(() => this.setTexture('dino-2'), 500);
     const origin = { x: this.x - 425, y: this.y - 170 };
 
     const group = new Phaser.GameObjects.Group(this.scene);
