@@ -24,7 +24,9 @@ export class Game extends Phaser.Scene {
   create(): void {
     this.background = this.createBackground();
     this.audience = new Audience(this);
-    this.stage = this.add.image(510, 840, 'stage');
+    this.stage = this.add.image(510, 820, 'stage');
+    this.stage.setScale(1.1);
+    this.stage.setDepth(20);
 
     this.redButton = new Button(this, ButtonColor.Red, 400, 760);
     this.blueButton = new Button(this, ButtonColor.Blue, 225, 760);
@@ -37,9 +39,13 @@ export class Game extends Phaser.Scene {
   private createBackground(): Phaser.GameObjects.Group {
     const { height, width } = this.scale;
     const bg = this.add.sprite(width * 0.5, height* 0.5, 'background');
-    bg.setDepth(-1);
+    bg.setDepth(-18);
+    bg.setTint(0x40291c);
     const rows = [...new Array(8)].map((value, index) => {
-      return this.add.sprite(width * 0.5, height * 0.5, `row-${index + 1}`);
+      const row = this.add.sprite(width * 0.5, height * 0.5, `row-${index + 1}`);
+      row.setDepth(8 - index * 2);
+      row.setTint(0xe66213);
+      return row;
     })
     return this.add.group([
       bg,

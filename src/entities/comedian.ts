@@ -6,6 +6,7 @@ export class Comedian extends Phaser.GameObjects.Sprite {
   constructor(scene: Phaser.Scene, x, y) {
     super(scene, x, y, 'dino-2', 0);
     scene.add.existing(this);
+    this.setDepth(21);
     this.setScale(0.95);
   }
 
