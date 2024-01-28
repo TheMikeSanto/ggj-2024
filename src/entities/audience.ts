@@ -7,29 +7,29 @@ export class Audience {
   private static readonly NUM_SEATS = 10;
   private static readonly ROW_SCALES = {
     0: {
-      scale: 0.1,
-      pixelsPerSeatX: 50,
-      y_offset: 55,
+      scale: 0.2,
+      pixelsPerSeatX: 65,
+      offsetY: 50,
     },
     1: {
-      scale: 0.15,
-      pixelsPerSeatX: 60,
-      y_offset: 55,
+      scale: 0.225,
+      pixelsPerSeatX: 75,
+      offsetY: 50,
     },
     2: {
-      scale: 0.175,
-      pixelsPerSeatX: 75,
-      y_offset: 55,
+      scale: 0.25,
+      pixelsPerSeatX: 85,
+      offsetY: 50,
     },
     3: {
-      scale: 0.2,
+      scale: 0.275,
       pixelsPerSeatX: 95,
-      y_offset: 55,
+      offsetY: 50,
     },
     4: {
-      scale: 0.225,
-      pixelsPerSeatX: 105,
-      y_offset: 55,
+      scale: 0.3,
+      pixelsPerSeatX: 100,
+      offsetY: 50,
     },
   }
   private members: AudienceMember[][] = this.generateAudience();
@@ -39,19 +39,17 @@ export class Audience {
   }
 
   private generateAudience(): AudienceMember[][] {
-    return [...new Array(Audience.NUM_SEATS)].map((_value, seatIndex) => {
-      return [...new Array(Audience.NUM_ROWS)].map((_value, rowIndex) => {
-        const { scale, pixelsPerSeatX, y_offset } = Audience.ROW_SCALES[rowIndex ];
-        if (rowIndex === 3) {
-          console.log(scale, pixelsPerSeatX, y_offset);
-        }
+    return [...new Array(Audience.NUM_ROWS)].map((_value, rowIndex) => {
+      const seats = [...new Array(Audience.NUM_SEATS)].map((_value, seatIndex) => {
+        const { scale, pixelsPerSeatX, offsetY } = Audience.ROW_SCALES[rowIndex ];
         const type = _.sample(PeopleType);
-        const x = 275 + (seatIndex * pixelsPerSeatX) - (rowIndex * 60);
-        const y = 380 + (rowIndex * y_offset);
+        const x = 285 + (seatIndex * pixelsPerSeatX) - (rowIndex * 60);
+        const y = 405 + (rowIndex * offsetY);
         const member = AudienceMember.create(this.scene, type, x, y, scale);
-        member.setDepth(rowIndex * 2)
+        member.setDepth(rowIndex)
         return member;
       });
+      return seats;
     });
   }
 }
