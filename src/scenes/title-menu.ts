@@ -19,7 +19,6 @@ export class TitleScreen extends Phaser.Scene {
         ? text.setAlpha(0)
         : text.setAlpha(1);
     }, 1000);
-    this.input.on('pointerdown', () => this.scene.start('GameScene'));
-    this.input.on('pointerdownoutside', () => this.scene.start('GameScene'));
+    this.input.on('pointerup', () => this.scene.start('GameScene'));
   }
 }
