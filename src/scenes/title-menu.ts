@@ -1,7 +1,7 @@
 import * as Phaser from 'phaser';
 
 export class TitleScreen extends Phaser.Scene {
-  
+
   constructor() {
     super({ key: 'TitleScreen'});
   }
@@ -20,5 +20,6 @@ export class TitleScreen extends Phaser.Scene {
         : text.setAlpha(1);
     }, 1000);
     this.input.on('pointerdown', () => this.scene.start('GameScene'));
+    this.input.on('pointerdownoutside', () => this.scene.start('GameScene'));
   }
 }
