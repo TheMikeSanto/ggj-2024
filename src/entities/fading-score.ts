@@ -18,7 +18,7 @@ export class FadingScore extends Phaser.GameObjects.Text {
     scene.add.existing(this);
     this.setShadow(5, 5, 'rgba(0,0,0,1)', 0)
 
-    EaseMoveToDestroy(this, FadingScore.Duration, x, y - FadingScore.Distance);
     this.setDepth(999);
+    EaseMoveToDestroy(this, FadingScore.Duration, x, y - FadingScore.Distance);
   }
 }

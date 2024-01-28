@@ -49,7 +49,7 @@ export class Game extends Phaser.Scene {
       new FadingScore(this, "+250", this.yellowButton.x + 25, this.yellowButton.y - 550);
     });
 
-    this.comedian = new Comedian(this, 775, 850);
+    this.comedian = new Comedian(this, 865, 850);
   }
 
   private createBackground(): Phaser.GameObjects.Group {
