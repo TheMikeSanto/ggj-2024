@@ -1,6 +1,7 @@
 import * as _ from 'lodash';
 import * as Phaser from 'phaser';
 import { EaseMoveTo, EaseMoveFrom } from 'phaser3-rex-plugins/plugins/easemove';
+import { FadingScore } from './fading-score';
 
 export enum PeopleType {
   blue1 = 'blue-1',
@@ -17,6 +18,7 @@ export enum PeopleType {
 export class AudienceMember extends Phaser.GameObjects.Sprite {
   private static readonly STAND_DISTANCE = 50;
   private static readonly STAND_DURATION = 500;
+  public peopleType: PeopleType;
   private origin = { x: this.x, y: this.y };
   private isStanding = false;
 
@@ -30,9 +32,10 @@ export class AudienceMember extends Phaser.GameObjects.Sprite {
     layer.sendToBack(chair);
     return member;
   }
-
+  
   constructor(scene: Phaser.Scene, type, x, y, scale) {
     super(scene, x, y, type, 0);
+    this.peopleType = type;
     scene.add.existing(this);
     this.setScale(scale);
   }
@@ -45,6 +48,10 @@ export class AudienceMember extends Phaser.GameObjects.Sprite {
   public standUp(): void {
     this.isStanding = true;
     EaseMoveTo(this, AudienceMember.STAND_DURATION, this.x, this.origin.y - AudienceMember.STAND_DISTANCE);
+  }
+
+  public tellJoke(jokeValue = 1000): void {
+    new FadingScore(this.scene, "+500", this.x, this.y);
   }
 
   public update(time: number, delta: number): void {

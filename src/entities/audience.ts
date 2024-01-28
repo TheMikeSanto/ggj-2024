@@ -31,27 +31,33 @@ export class Audience {
       pixelsPerSeatX: 100,
       offsetY: 50,
     },
-  }
+  };
+  private excitedMembers: AudienceMember[] = [];
   private members: AudienceMember[][] = this.generateAudience();
 
   constructor(private scene: Phaser.Scene) {
-    this.scene.time.addEvent({
-      delay: 10000,
-      startAt: 0,
-      repeat: 10,
-      callback: (...args) => console.log('timer event', args),
-    });
+    console.log(this);
   }
 
-  public makeEmStand(): void {
-    _(this.members)
+  public makeEmStand(): AudienceMember[] {
+    const members = _(this.members)
       .flatten()
       .sampleSize(5)
-      .forEach(member => member.standUp());
+      .value();
+    members.forEach(member => member.standUp());
+    this.excitedMembers = members;
+    return members;
   }
 
-  public update() {
-    
+  public makeEmSit(): void {
+    this.excitedMembers.forEach(member => member.sitDown());
+  }
+
+  public tellJoke(type: string): number {
+    this.excitedMembers.forEach(member => member.sitDown());
+    const members = this.excitedMembers.filter(member => member.peopleType.includes(type));
+    members.forEach(member => member.tellJoke());
+    return members.length * 1000;
   }
 
   private generateAudience(): AudienceMember[][] {

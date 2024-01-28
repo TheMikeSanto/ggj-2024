@@ -10,6 +10,7 @@ export class Game extends Phaser.Scene {
   private stage;
   private background: Phaser.GameObjects.Group;
   private comedian: Comedian;
+  private currentLoop: Phaser.Time.TimerEvent;
   private blueButton: Button;
   private greenButton: Button;
   private redButton: Button;
@@ -35,23 +36,15 @@ export class Game extends Phaser.Scene {
     this.greenButton = new Button(this, ButtonColor.Green, 350, 920);
     this.yellowButton = new Button(this, ButtonColor.Yellow, 175, 920);
 
-    this.redButton.on('pointerdown', () => {
-      new FadingScore(this, "+1000", this.redButton.x + 25, this.redButton.y - 250);
-      this.comedian.speak();
-      this.audience.makeEmStand();
-    });
+    this.redButton.on('pointerdown', () => this.endRound('red'));
 
-    this.blueButton.on('pointerdown', () => {
-      new FadingScore(this, "+750", this.blueButton.x + 25, this.blueButton.y - 250);
-    });
+    this.blueButton.on('pointerdown', () => this.endRound('blue'));
 
-    this.greenButton.on('pointerdown', () => {
-      new FadingScore(this, "+500", this.greenButton.x + 25, this.greenButton.y - 550);
-    });
+    this.greenButton.on('pointerdown', () => this.endRound('green'));
 
-    this.yellowButton.on('pointerdown', () => {
-      new FadingScore(this, "+250", this.yellowButton.x + 25, this.yellowButton.y - 550);
-    });
+    this.yellowButton.on('pointerdown', () => this.endRound('yellow'));
+
+    this.doGameLoop();
   }
 
   private createBackground(): Phaser.GameObjects.Group {
@@ -66,5 +59,34 @@ export class Game extends Phaser.Scene {
       bg,
       lights,
     ]);
+  }
+
+  private doGameLoop(): void {
+    const excitedMembers = this.audience.makeEmStand();
+    [this.redButton, this.blueButton, this.greenButton, this.yellowButton].forEach(button => {
+      button.enable();
+    });
+
+    this.currentLoop = this.time.addEvent({
+      delay: 5000,
+      startAt: 0,
+      callback: () => this.endRound(),
+    });
+  }
+
+  private endRound(color?: string): void {
+    this.currentLoop.remove();
+    this.audience.makeEmSit();
+    if (color) {
+      this.audience.tellJoke(color);
+      this.comedian.speak();
+    }
+    [this.redButton, this.blueButton, this.greenButton, this.yellowButton].forEach(button => {
+      button.disable();
+    });
+    this.time.addEvent({
+      delay: 1000,
+      callback: () => this.doGameLoop()
+    });
   }
 }

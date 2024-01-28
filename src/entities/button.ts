@@ -25,6 +25,7 @@ export class Button extends Phaser.GameObjects.Sprite {
   }
 
   public enable(): void {
+    this.setAlpha(1);
     this.setInteractive();
   }
 
