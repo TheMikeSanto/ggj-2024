@@ -104,4 +104,8 @@ export class Game extends Phaser.Scene {
       callback: () => this.doGameLoop()
     });
   }
+
+  public update(time, delta) {
+    this.audience.update(time, delta);
+  }
 }
