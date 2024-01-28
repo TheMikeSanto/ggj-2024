@@ -88,4 +88,12 @@ export class Audience {
       return seats;
     });
   }
+
+  public update(time: number, delta: number): void {
+    this.members.forEach(row => {
+      row.forEach(member => {
+        member.update(time, delta);
+      });
+    });
+  }
 }

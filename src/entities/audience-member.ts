@@ -31,6 +31,11 @@ export class AudienceMember extends Phaser.GameObjects.Sprite {
   private origin = { x: this.x, y: this.y };
   private isStanding = false;
   private giggleSound: Phaser.Sound.BaseSound;
+  private idleShiftAmount: number = .7;
+  private idleShiftSpeed: number = 0.001;
+  private idleShiftFrequency: number;
+  private nextShiftTime: number = 0;
+  private shiftCooldown: number = 1000;
 
   public static create(scene: Phaser.Scene, type: PeopleType, x, y, scale = 0.1, giggleType: GiggleType): AudienceMember {
     const member = new AudienceMember(scene, type, x, y, scale, giggleType);
@@ -42,7 +47,7 @@ export class AudienceMember extends Phaser.GameObjects.Sprite {
     layer.sendToBack(chair);
     return member;
   }
-  
+
   constructor(scene: Phaser.Scene, type, x, y, scale, giggleType: GiggleType) {
     super(scene, x, y, type, 0);
     this.peopleType = type;
@@ -70,5 +75,21 @@ export class AudienceMember extends Phaser.GameObjects.Sprite {
   }
 
   public update(time: number, delta: number): void {
+    if (!this.isStanding) {
+      this.nextShiftTime -= delta;
+      if (this.nextShiftTime <= 0) {
+        this.performIdleShift();
+        this.scheduleNextShift();
+      }
+    }
+  }
+
+  private performIdleShift() {
+    const shiftX = Phaser.Math.FloatBetween(-1, 1);
+    this.setX(this.origin.x + shiftX);
+  }
+
+  private scheduleNextShift() {
+    this.nextShiftTime = Phaser.Math.Between(this.shiftCooldown, this.shiftCooldown * 2);
   }
 }
