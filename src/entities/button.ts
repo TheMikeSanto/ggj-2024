@@ -18,10 +18,10 @@ export class Button extends Phaser.GameObjects.Sprite {
     this.setDepth(21);
     this.setInteractive();
     this.setScale(0.24);
-    this.shake = new ShakePosition(this, {});
+    this.shake = new ShakePosition(this, {
+      magnitude: 10,
+      duration: 1500,
+    });
     this.on('pointerdown', () => this.shake.shake());
-  }
-
-  public update(time: number, delta: number): void {
   }
 }

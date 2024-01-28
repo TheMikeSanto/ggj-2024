@@ -28,10 +28,10 @@ export class Game extends Phaser.Scene {
     this.stage.setScale(1.1);
     this.stage.setDepth(20);
 
-    this.redButton = new Button(this, ButtonColor.Red, 400, 760);
-    this.blueButton = new Button(this, ButtonColor.Blue, 225, 760);
-    this.greenButton = new Button(this, ButtonColor.Green, 400, 930);
-    this.yellowButton = new Button(this, ButtonColor.Yellow, 225, 930);
+    this.redButton = new Button(this, ButtonColor.Red, 400, 750);
+    this.blueButton = new Button(this, ButtonColor.Blue, 225, 750);
+    this.greenButton = new Button(this, ButtonColor.Green, 400, 920);
+    this.yellowButton = new Button(this, ButtonColor.Yellow, 225, 920);
 
     this.comedian = new Comedian(this, 775, 850);
   }
