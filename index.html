@@ -9,6 +9,10 @@
 
     <style>
       @font-face {
+        font-family: 'Dinotopian';
+        src: url('fonts/Dinotopian.woff');
+      }
+      @font-face {
         font-family: 'Public Pixel';
         src: url('fonts/PublicPixel.ttf');
       }
@@ -26,7 +30,8 @@
     <script src="app.js"></script>
 
     <!-- force font preloading -->
-    <div style="font-family:Public Pixel;">Test</div>
+    <div style="font-family:Dinotopian; position:absolute; left:-1000px; visibility:hidden;">.</div>
+    <div style="font-family:Public Pixel; position:absolute; left:-1000px; visibility:hidden;">.</div>
   </body>
 
 </html>
