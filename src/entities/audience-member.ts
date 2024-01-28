@@ -2,6 +2,7 @@ import * as _ from 'lodash';
 import * as Phaser from 'phaser';
 import { EaseMoveTo, EaseMoveFrom } from 'phaser3-rex-plugins/plugins/easemove';
 import { FadingScore } from './fading-score';
+import { Game } from '../scenes/game';
 
 export enum PeopleType {
   blue1 = 'blue-1',
@@ -50,8 +51,8 @@ export class AudienceMember extends Phaser.GameObjects.Sprite {
     EaseMoveTo(this, AudienceMember.STAND_DURATION, this.x, this.origin.y - AudienceMember.STAND_DISTANCE);
   }
 
-  public tellJoke(jokeValue = 1000): void {
-    new FadingScore(this.scene, "+500", this.x, this.y);
+  public tellJoke(jokeValue: number): void {
+    new FadingScore(this.scene, `+${jokeValue}`, this.x, this.y);
   }
 
   public update(time: number, delta: number): void {

@@ -53,11 +53,11 @@ export class Audience {
     this.excitedMembers.forEach(member => member.sitDown());
   }
 
-  public tellJoke(type: string): number {
+  public tellJoke(type: string, scorePerJoke: number): number {
     this.excitedMembers.forEach(member => member.sitDown());
     const members = this.excitedMembers.filter(member => member.peopleType.includes(type));
-    members.forEach(member => member.tellJoke());
-    return members.length * 1000;
+    members.forEach(member => member.tellJoke(scorePerJoke));
+    return members.length * scorePerJoke;
   }
 
   private generateAudience(): AudienceMember[][] {
