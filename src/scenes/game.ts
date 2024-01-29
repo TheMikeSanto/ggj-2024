@@ -3,6 +3,7 @@ import * as Phaser from 'phaser';
 import { Audience } from '../entities/audience';
 import { Button, ButtonColor } from '../entities/button';
 import { Comedian } from '../entities/comedian';
+import { Curtains } from '../entities/curtains';
 
 export class Game extends Phaser.Scene {
   private audience: Audience;
@@ -11,6 +12,7 @@ export class Game extends Phaser.Scene {
   private bgMusic;
   private comedian: Comedian;
   private currentLoop: Phaser.Time.TimerEvent;
+  private curtains: Curtains;
   private blueButton: Button;
   private jokeValue = 500;
   private greenButton: Button;
@@ -28,6 +30,7 @@ export class Game extends Phaser.Scene {
 
   create(): void {
     this.background = this.createBackground();
+    this.curtains = new Curtains(this);
     this.audience = new Audience(this);
     this.scoreCounter = this.createScoreCounter();
     this.stage = this.add.image(510, 820, 'stage');
@@ -42,9 +45,11 @@ export class Game extends Phaser.Scene {
       .on('pointerdown', () => this.endRound('green'));
     this.yellowButton = new Button(this, ButtonColor.Yellow, 175, 920)
       .on('pointerdown', () => this.endRound('yellow'));
-    this.bgMusic = this.sound.add('music').setVolume(0.1).setLoop(true).play();
-    this.sound.add('cheer').setVolume(0.3).play();
-    this.doGameLoop();
+    setTimeout(() => {
+      this.bgMusic = this.sound.add('music').setVolume(0.1).setLoop(true).play();
+      this.sound.add('cheer').setVolume(0.3).play();
+      this.doGameLoop();
+    }, 1000);
   }
 
   private createBackground(): Phaser.GameObjects.Group {
@@ -65,15 +70,18 @@ export class Game extends Phaser.Scene {
     const bubble = this.add.graphics({ x: 5, y: 5 });
     bubble.fillStyle(0x111111, 1);
     bubble.fillRoundedRect(6, 6, 300, 80, 16);
+    bubble.setDepth(10);
     const text = this.add.text(30, 35, this.score.toString(), {
       fontSize: '32pt',
       fontFamily: 'Public Pixel',
       color: 'white',
     });
+    text.setDepth(11);
     return text;
   }
 
-  private doGameLoop(): void {
+  private async doGameLoop(): Promise<void> {
+    await this.curtains.open();
     this.audience.makeEmStand();
     [this.redButton, this.blueButton, this.greenButton, this.yellowButton].forEach(button => {
       button.enable();
