@@ -2,7 +2,7 @@ import * as Phaser from 'phaser';
 import { EaseMoveTo } from 'phaser3-rex-plugins/plugins/easemove';
 
 export class Curtains extends Phaser.GameObjects.Group {
-  private duration = 500;
+  private duration = 800;
   private topCurtain: Phaser.GameObjects.Sprite;
   private leftCurtain: Phaser.GameObjects.Sprite;
   private rightCurtain: Phaser.GameObjects.Sprite;
@@ -34,28 +34,28 @@ export class Curtains extends Phaser.GameObjects.Group {
 
   public close(): Promise<void> {
     return new Promise<void>((resolve) => {
-      EaseMoveTo(this.topCurtain, this.duration, this.screenCenterX, 0)
+      EaseMoveTo(this.topCurtain, this.duration / 2, this.screenCenterX, 0)
 
       setTimeout(() => {
-        EaseMoveTo(this.leftCurtain, this.duration, 0, 0, 'bounce');
-        EaseMoveTo(this.rightCurtain, this.duration, 500, 0, 'bounce');
-      }, this.duration / 4);
+        EaseMoveTo(this.leftCurtain, this.duration / 2, 0, 0, 'bounce');
+        EaseMoveTo(this.rightCurtain, this.duration / 2, 500, 0, 'bounce');
+      }, this.duration / 2);
 
-      setTimeout(() => resolve(), this.duration * 2);
+      setTimeout(() => resolve(), this.duration);
     });
   }
 
   public open(): Promise<void> {
     return new Promise<void>((resolve, reject) => {
-      EaseMoveTo(this.leftCurtain, this.duration, -512, 0);
-      EaseMoveTo(this.rightCurtain,this.duration, 1025, 0);
+      EaseMoveTo(this.leftCurtain, this.duration / 2, -512, 0);
+      EaseMoveTo(this.rightCurtain,this.duration / 2, 1025, 0);
       setTimeout(() => EaseMoveTo(
         this.topCurtain,
-        this.duration,
+        this.duration / 2,
         this.screenCenterX,
         -1024,
-      ), this.duration / 4)
-      setTimeout(() => resolve(), this.duration * 2);
+      ), this.duration / 2)
+      setTimeout(() => resolve(), this.duration);
     });
   }
 
